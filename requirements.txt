@@ -1,0 +1,9 @@
+flask
+Flask-RESTful
+httpie
+Flask-SQLAlchemy
+Flask-Migrate
+psycopg2-binary
+passlib
+Flask-JWT-Extended
+PyJWT==1.6.1
