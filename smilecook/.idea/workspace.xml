@@ -5,7 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c70bf088-3d7d-4fcd-a0ae-b175bfc21ac1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/smilecook.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../extensions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../migrations/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../migrations/versions/c99c35359f8a_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../models/recipes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../models/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/confg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/recipes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/token.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/utils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +45,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -35,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="ALL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
