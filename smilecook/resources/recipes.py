@@ -31,7 +31,7 @@ class RecipeListResource(Resource):
 
 class RecipesResource(Resource):
 
-    def get(self,recipe_id):
+    def get(self, recipe_id):
         recipe = next((recipe for recipe in recipes_list if recipe.id == recipe_id and recipe.is_publish == True), None)
 
         if recipe is None:

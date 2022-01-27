@@ -1,9 +1,14 @@
 from flask import request
 from flask_restful import Resource
 from http import HTTPStatus
-from resources.utils import hash_password
+from resources.utils import hash_password, check_password
 from models.user import User
+from flask_jwt_extended import create_access_token
 
+class UserResouce(Resource):
+    def post(self):
+
+        
 class UserListResource(Resource):
     def post(self):
         json_data = request.get_json()

@@ -1,14 +1,5 @@
 from extensions import db
 
-recipes_list = []
-
-def get_last_id():
-    if recipes_list:
-        last_recipes = recipes_list[-1]
-    else:
-        return 1
-    return last_recipes.id+1
-
 class Recipes(db.Model):
 
     __tablename__= 'recipes'
@@ -26,6 +17,14 @@ class Recipes(db.Model):
 
 #-----------------------------------------------------------------------------------------------------------------------
 '''
+recipes_list = []
+
+def get_last_id():
+    if recipes_list:
+        last_recipes = recipes_list[-1]
+    else:
+        return 1
+    return last_recipes.id+1
 class Recipes:
     def __init__(self, name, description, num_of_servings, cook_time, directions):
         self.id = get_last_id()
