@@ -27,7 +27,6 @@ class RecipeListResource(Resource):
         recipes_list.append(recipe)
         return recipe.data, HTTPStatus.OK
 
-#-----------------------------------------------------------------------------------------------------------------------
 
 class RecipesResource(Resource):
 
@@ -60,7 +59,6 @@ class RecipesResource(Resource):
 
         return HTTPStatus.OK
 
-#-----------------------------------------------------------------------------------------------------------------------
 
 class RecipesPublishResource(Resource):
     def put(self, recipe_id):

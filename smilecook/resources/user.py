@@ -1,14 +1,36 @@
 from flask import request
 from flask_restful import Resource
 from http import HTTPStatus
-from resources.utils import hash_password, check_password
+from resources.utils import hash_password
 from models.user import User
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import jwt_optional, get_jwt_identity
 
+#para obter detalhes do usuáro
 class UserResouce(Resource):
-    def post(self):
+    @jwt_optional
+    def get(self, username):
 
-        
+        user = User.get_by_username(username)
+
+        if user is None:
+            return {'message': 'recipe not found'}, HTTPStatus.NOT_FOUND
+
+        current_user = get_jwt_identity()
+        print(current_user)
+        if current_user == user.id:
+                data = {
+                    'id': user.id,
+                    'username': user.username,
+                    'email': user.email
+                }
+        else:
+            data = {
+                'id': user.id,
+                'username': user.username
+            }
+        return data, HTTPStatus.OK
+
+
 class UserListResource(Resource):
     def post(self):
         json_data = request.get_json()
