@@ -3,9 +3,22 @@ from flask_restful import Resource
 from http import HTTPStatus
 from resources.utils import hash_password
 from models.user import User
-from flask_jwt_extended import jwt_optional, get_jwt_identity
+from flask_jwt_extended import jwt_optional, get_jwt_identity, jwt_required
 
 #para obter detalhes do usuáro
+
+class MeResource(Resource):
+    @jwt_required
+    def get(self):
+        print(get_jwt_identity())
+        user = User.get_by_id(id = get_jwt_identity())
+        data = {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email
+        }
+        return data, HTTPStatus.OK
+
 class UserResouce(Resource):
     @jwt_optional
     def get(self, username):
