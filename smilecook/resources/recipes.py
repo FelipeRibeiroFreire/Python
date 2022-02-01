@@ -5,7 +5,7 @@ from flask_jwt_extended import get_jwt_identity, jwt_required, jwt_optional
 from http import HTTPStatus
 from models.recipes import Recipes
 
-
+#armazena as receitas
 class RecipeListResource(Resource):
 
     def get(self):
@@ -32,9 +32,9 @@ class RecipeListResource(Resource):
         recipe.save()
         return recipe.data(), HTTPStatus.OK
 
-
+#buscar uma receita
 class RecipesResource(Resource):
-    #obiter uma receita especifica
+
     @jwt_optional
     def get(self, recipe_id):
         recipe = Recipes.get_by_id(recipe_id=recipe_id)
@@ -83,24 +83,31 @@ class RecipesResource(Resource):
         return {}, HTTPStatus.NO_CONTENT
 
 
-'''class RecipesPublishResource(Resource):
+class RecipesPublishResource(Resource):
+    @jwt_required
     def put(self, recipe_id):
-        recipe = next((recipe for recipe in recipes_list if recipe.id == recipe_id), None)
+        recipe =Recipes.get_by_id(recipe_id=recipe_id)
 
         if recipe is None:
             return {'message': 'recipe not found'}, HTTPStatus.NOT_FOUND
 
+        current_user = get_jwt_identity()
+        if current_user != recipe.user_id:
+            return {'message': 'Access is not allowed'}, HTTPStatus.FORBIDDEN
+
         recipe.is_publish = True
-        return {}, HTTPStatus.NO_CONTENT
+        recipe.save()
+        return recipe.data(), HTTPStatus.NO_CONTENT
 
     #deletar publicação
-
+    @jwt_required
     def delete(self, recipe_id):
-        recipe = next((recipe for recipe in recipes_list if recipe['id'] == recipe_id),None)
+        recipe =Recipes.get_by_id(recipe_id=recipe_id)
 
         if recipe is None:
             return {'message': 'recipe not found'}, HTTPStatus.NOT_FOUND
 
         recipe.is_publish = False
+        recipe.save()
         return {}, HTTPStatus.NO_CONTENT
-    '''
+

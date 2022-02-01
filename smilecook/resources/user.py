@@ -19,6 +19,7 @@ class MeResource(Resource):
         }
         return data, HTTPStatus.OK
 
+#consultar usuario
 class UserResouce(Resource):
     @jwt_optional
     def get(self, username):
@@ -43,7 +44,7 @@ class UserResouce(Resource):
             }
         return data, HTTPStatus.OK
 
-
+#criar usuario
 class UserListResource(Resource):
     def post(self):
         json_data = request.get_json()
