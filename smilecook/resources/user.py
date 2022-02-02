@@ -1,74 +1,48 @@
 from flask import request
-from flask_restful import Resource
 from http import HTTPStatus
-from resources.utils import hash_password
 from models.user import User
+from flask_restful import Resource
+from schemas.user import UserSchema
 from flask_jwt_extended import jwt_optional, get_jwt_identity, jwt_required
 
+user_schema = UserSchema()
+user_public_schema = UserSchema(exclude=('email',))
 #para obter detalhes do usuáro
-
 class MeResource(Resource):
     @jwt_required
     def get(self):
-        print(get_jwt_identity())
         user = User.get_by_id(id = get_jwt_identity())
-        data = {
-            'id': user.id,
-            'username': user.username,
-            'email': user.email
-        }
-        return data, HTTPStatus.OK
+        return user_schema.dump(user), HTTPStatus.OK
 
 #consultar usuario
 class UserResouce(Resource):
     @jwt_optional
     def get(self, username):
 
-        user = User.get_by_username(username)
+        user = User.get_by_username(username=username)
 
         if user is None:
             return {'message': 'recipe not found'}, HTTPStatus.NOT_FOUND
 
         current_user = get_jwt_identity()
-        print(current_user)
         if current_user == user.id:
-                data = {
-                    'id': user.id,
-                    'username': user.username,
-                    'email': user.email
-                }
+              data = user_schema.dump(user)
         else:
-            data = {
-                'id': user.id,
-                'username': user.username
-            }
+            data = user_public_schema.dump(user)
         return data, HTTPStatus.OK
 
 #criar usuario
 class UserListResource(Resource):
     def post(self):
         json_data = request.get_json()
-        username = json_data.get('username')
-        email = json_data.get('email')
-        non_hash_password = json_data.get('password')
+        data = user_schema.load(json_data)
 
-        if User.get_by_username(username):
+        if User.get_by_username(data.get('email')):
             return {'message': 'username already in use'}, HTTPStatus.BAD_REQUEST
-        if User.get_by_email(email):
+        if User.get_by_email(data.get('username')):
             return {'message': 'email already in use'}, HTTPStatus.BAD_REQUEST
 
-        password = hash_password(non_hash_password)
-        user = User(
-            username = username,
-            email = email,
-            password = password
-        )
-
+        user = User(**data)
         user.save()
-        data = {
-            'id': user.id,
-            'username': user.username,
-            'email': user.email
-        }
 
-        return data, HTTPStatus.OK
+        return user_schema.dump(user), HTTPStatus.CREATED
